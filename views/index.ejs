@@ -1,13 +1,17 @@
 <% include partials/header.ejs%>
+
+<div class="container main segment ui">
 <h1>All blogs are here</h1>
 
 <% blogs.forEach(function (blog) { %>
     <div>
         <h3><%= blog.title%></h3>
         <p><%= blog.date%></p>
-        <img src="<%= blog.img%>">
+        <img height="200px" width="300px" src="<%= blog.img%>">
         <p><%= blog.body%></p>
     </div>
 <%})%>
+
+</div>
 
 <% include partials/footer.ejs%>

@@ -1,0 +1,41 @@
+<% include partials/header.ejs %>
+
+<div class="ui grid">
+    <div class="nine wide column centered">
+        <div class="container main segment ui">
+
+            <h4 class="ui dividing header">New Blogs</h4>
+
+            <form action="/blogs" method="post" class="ui form small eight wide centered">
+                <div class="field">
+                    <div class="field form-input">
+                            <input type="text" name="blogs[title]" placeholder="Title">
+                    </div>
+
+                    <div class="field form-input">
+                        <input type="url" name="blogs[img]" placeholder="Image URL">
+                    </div>
+
+                    <div class="field form-input">
+                        <textarea name="blogs[body]" placeholder="Your Blog.." rows="5"></textarea>
+                    </div>
+                    <div class="btn-container field form-input">
+                        <button class="ui animated button primary small eight wide centered">
+                            <div class="visible content">SAVE</div>
+                            <div class="hidden content">
+                                <i class="right arrow icon"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+<% include partials/footer.ejs %>
