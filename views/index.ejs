@@ -1,3 +1,4 @@
+<% include partials/header.ejs%>
 <h1>All blogs are here</h1>
 
 <% blogs.forEach(function (blog) { %>
@@ -8,3 +9,5 @@
         <p><%= blog.body%></p>
     </div>
 <%})%>
+
+<% include partials/footer.ejs%>
