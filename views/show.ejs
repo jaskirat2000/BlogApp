@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<div class="ui grid">
+    <div class="ui main text container segment twelve wide column centered">
+        <div class="ui huge dividing header"><%= blog.title %></div>
+        <div class="ui top attached">
+            <div class="item">
+                <img src="<%= blog.img%>" class="ui centered rounded image">
+                <div class="content">
+                    <span class="centered">Created: <%= blog.date.toDateString()%></span>
+                </div>
+                <div class="description">
+                    <p class="body"><%= blog.body%></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/footer.ejs %>

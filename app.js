@@ -69,6 +69,21 @@ app.post("/blogs", function (req, res) {
 
 });
 
+app.get("/blogs/:id", function (req, res) {
+
+    var id= req.params.id;
+
+    Blog.findById(id, function (err, blog) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("show", {blog: blog});
+        }
+    });
+
+
+});
+
 
 app.listen(3000, function () {
     console.log("Blog App is Online!");
