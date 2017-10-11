@@ -2,7 +2,8 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    override= require("method-override");
+    override= require("method-override"),
+    sanitizer=require("express-sanitizer");
 
 var app = express();
 
@@ -10,6 +11,7 @@ var app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(sanitizer());
 app.use(override("_method"));
 
 mongoose.connect("mongodb://localhost/blog_app", {useMongoClient: true});
@@ -63,6 +65,11 @@ app.get("/blogs/new", function (req, res) {
 //CREATE
 app.post("/blogs", function (req, res) {
 
+    console.log(req.body.blogs.body);
+    req.body.blogs.body= req.sanitize(req.body.blogs.body);
+    console.log(req.body.blogs.body);
+    
+
     Blog.create(req.body.blogs, function (err, blog) {
         if (err) {
             console.log(err);
@@ -105,12 +112,27 @@ app.get("/blogs/:id/edit", function (req, res) {
 //UPDATE
 app.put("/blogs/:id", function (req, res) {
     var id= req.params.id;
+    req.body.blogs.body= req.sanitize(req.body.blogs.body);
+
     Blog.findByIdAndUpdate(id,req.body.blogs,function (err, updatedBlog) {
         if(err){
             console.log(err);
         }else{
             res.redirect("/blogs/"+req.params.id);
         }
+    });
+})
+
+//DELETE
+app.delete("/blogs/:id",function (req, res) {
+    var id= req.params.id;
+
+    Blog.findByIdAndRemove(id,function (err) {
+       if(err){
+           console.log(err);
+       } else{
+           res.redirect("/");
+       }
     });
 })
 

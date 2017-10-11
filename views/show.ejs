@@ -5,13 +5,17 @@
         <div class="ui huge dividing header"><%= blog.title %></div>
         <div class="ui top attached">
             <div class="item">
-                <img src="<%= blog.img%>" class="ui centered rounded image">
-                <div class="content">
+                <img src="<%= blog.img%>" class="ui centered rounded image space">
+                <div class="content space">
                     <span class="centered">Created: <%= blog.date.toDateString()%></span>
                 </div>
-                <div class="description">
-                    <p class="body"><%= blog.body%></p>
+                <div class="description space">
+                    <p class="body"><%- blog.body%></p>
                 </div>
+                <a href="/blogs/<%= blog._id%>/edit" class="ui small grey basic button">UPDATE</a>
+                <form id="delete" method="post" action="/blogs/<%= blog._id%>?_method=DELETE">
+                    <button class="ui small red basic button">DELETE</button>
+                </form>
             </div>
         </div>
     </div>

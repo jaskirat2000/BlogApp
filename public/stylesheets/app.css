@@ -12,5 +12,12 @@ i.icon {
 
 .body{
     margin-top: 20px;
+}
 
+#delete{
+    display: inline;
+}
+
+.space{
+    margin: 10px 0px;
 }
